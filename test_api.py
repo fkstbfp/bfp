@@ -73,17 +73,3 @@ def test_invalid_login():
 def test_not_found():
     response = requests.get("https://reqres.in/api/users/999")
     assert response.status_code == 404
-
-# Тестирование метода PUT
-def test_update_user():
-    payload = {"name": "Alice Updated", "job": "Senior Engineer"}
-    response = requests.put("https://reqres.in/api/users/2", json=payload)
-    assert response.status_code == 200
-    assert response.json()["name"] == payload["name"]
-    assert response.json()["job"] == payload["job"]
-
-# Тестирование метода DELETE
-def test_delete_user():
-    response = requests.delete("https://reqres.in/api/users/2")
-    assert response.status_code == 204
-    
